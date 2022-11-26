@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    display: flex;
+    
+}
+
+#title{
+   margin: auto;
+}
+.add{
+text-align: center;
+
+}
+
+.btn{
+    height: 40px;;
+    margin-right: 50px;
+}
+
+footer {
+    padding-top: 30px;
+    text-align: center;
+    color: gray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
