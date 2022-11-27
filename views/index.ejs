@@ -5,17 +5,24 @@
     <div id="title">
         <h1>Matrix Master Community</h1>
         <h2>There are -- questions</h2>
-    </div>
-
-
-
-        
-    
+    </div>   
 </div>
 <div class="add">
     <a href="/addQuestion" class="btn btn-outline-dark">Add question</a>
-</div>
-
-
+</div> <br>
+<% if (result.length> 0 ) {%>
+    <% result.forEach(element=> { %>
+  <div class="card  add-question">
+    <div class="card-body">
+      <h5 class="card-title"><%= element.title %></h5>
+                <p class="card-text mb-2"><%= element.message %></p>
+                <p><%= element.createdAt.toLocaleDateString() %></p>
+      <a href=/question/<%= element._id%> class="card-link">See more</a>
+    </div>
+  </div>
+  <% }); %>
+  <% } else { %>
+      there is no messages....
+<% } %>
 
 <%- include('./components/footer')%>

@@ -21,9 +21,23 @@ const getLogInPage = (req, res) => {
 const getSignUpPage = (req, res) => {
     res.render('signUp')
 }
-module.exports = {
-    getHomePage,
-    getAddQuestionPage,
-    getLogInPage,
-    getSignUpPage
-}
+
+const postQuestion = (req, res) => {
+    // console.log(req.body)
+     const question = new Question(req.body)
+     question.save()
+         .then( result => res.redirect('/'))
+         .catch(err =>res.render('index', {err}))
+ }
+ 
+ const getOneQuestionPage = (req, res) => {
+     res.render('oneQuestion')
+ }
+ module.exports = {
+     getHomePage,
+     getAddQuestionPage,
+     getLogInPage,
+     getSignUpPage,
+     postQuestion,
+     getOneQuestionPage
+ }
