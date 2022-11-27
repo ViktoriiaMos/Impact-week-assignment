@@ -5,24 +5,31 @@
 
 .header{
     display: flex;
-    
 }
+
 
 #title{
    margin: auto;
+   margin-right: 420px;
 }
-.add{
-text-align: center;
+h2{
+    position:relative;
+    margin-left: 55px;
 
+}
+
+.add{
+    text-align: center;
+    margin-left: 55px;
 }
 
 .btn{
-    height: 40px;;
+    height: 37px;;
     margin-right: 50px;
 }
 
 footer {
-    padding-top: 30px;
+    padding-top: 500px;
     text-align: center;
     color: gray;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
