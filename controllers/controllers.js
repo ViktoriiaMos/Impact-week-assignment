@@ -18,8 +18,12 @@ const getAddQuestionPage = (req, res) => {
 const getLogInPage = (req, res) => {
     res.render('logIn')
 }
+const getSignUpPage = (req, res) => {
+    res.render('signUp')
+}
 module.exports = {
     getHomePage,
     getAddQuestionPage,
-    getLogInPage
+    getLogInPage,
+    getSignUpPage
 }

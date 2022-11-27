@@ -1,6 +1,16 @@
 <%- include('./components/header')%>
-<h2>Hello log in</h2>
 
+<div class="back">
+    <a href="/", class="btn btn-outline-dark">back</a>
+</div>
+<div class="login">
+    <form method="post" action="">
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="password" placeholder="Password" name="password" required />
+        <button>Login user</button>
+        <h1>No account?<a href="/signup">Create an account</a></h1>
+    </form>
+</div>
 
 
 
