@@ -5,24 +5,58 @@
 
 .header{
     display: flex;
-    
 }
+
 
 #title{
    margin: auto;
+   margin-right: 420px;
+}
+h2{
+    position:relative;
+    margin-left: 55px;
+
+}
+.login h1{
+    font-size:medium;
+}
+.login{
+    position: absolute;
+    margin-top: 10px;
+    width: 100%;
+    background-color: lightgray;
+    padding: 30px;
+    margin-bottom: 45px;
+}
+.login button{
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.login input{
+    font-family:Arial, Helvetica, sans-serif;
+    border-radius: 2px;
+    text-decoration: solid;
 }
 .add{
-text-align: center;
-
+    text-align: center;
+    margin-left: 55px;
 }
-
 .btn{
-    height: 40px;;
+    height: 37px;;
     margin-right: 50px;
 }
 
 footer {
-    padding-top: 30px;
+    padding-top: 500px;
     text-align: center;
     color: gray;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
