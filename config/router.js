@@ -7,5 +7,4 @@ router.get('/addQuestion', controller.getAddQuestionPage)
 router.get('/auth', controller.getLogInPage)
 
 
-
 module.exports = router;
