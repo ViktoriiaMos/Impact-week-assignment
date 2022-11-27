@@ -55,6 +55,19 @@ h2{
     margin-right: 50px;
 }
 
+.add-question{
+    width: 80%;
+    margin: auto;
+}
+
+.center{
+   padding: 20px 0;
+}
+h3{
+    text-align: center;
+}
+
+
 footer {
     padding-top: 500px;
     text-align: center;
