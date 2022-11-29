@@ -1,5 +1,6 @@
+const userModel = require('../models/users')
 const { Question } = require("../models/Question")
-
+const bcrypt = require('bcrypt')
 const getHomePage = (req, res) => {
     Question.find()
         .then(result => {
@@ -22,6 +23,50 @@ const getSignUpPage = (req, res) => {
     res.render('signUp')
 }
 
+
+
+
+
+const createNewUser = (req, res) => {
+    if(req.body.password.length < 8){
+        res.render('index', {
+            err: "Password should be 8 or more",
+            result: "",
+            logInerr: ""
+        })
+    } else {
+        let hashedPass = bcrypt.hashSync(req.body.password, 12);
+        if(!hashedPass){
+            res.render('index', {
+                err: "Something wrong",
+                result: "",
+                logInerr: ""
+            })
+        } else {
+            let userData = {
+                ...req.body,
+                password: hashedPass
+            }
+            let newUser = new userModel(userData)
+            newUser.save()
+                .then( (user) => {
+                    res.render('index', {
+                        err: "",
+                        logInerr: ""
+                    })
+                })
+                .catch( err => {
+                    throw err;
+                })
+        }
+    }
+}
+
+
+
+
+
+
 const postQuestion = (req, res) => {
     // console.log(req.body)
      const question = new Question(req.body)
@@ -39,5 +84,6 @@ const postQuestion = (req, res) => {
      getLogInPage,
      getSignUpPage,
      postQuestion,
-     getOneQuestionPage
+     getOneQuestionPage,
+     createNewUser
  }

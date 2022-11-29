@@ -7,6 +7,7 @@ router.get('/addQuestion', controller.getAddQuestionPage);
 router.get('/auth', controller.getLogInPage);
 router.get('/signup',controller.getSignUpPage);
 router.post('/', controller.postQuestion);
+router.post('/create-new-user', controller.createNewUser);
 router.get('/question/:id', controller.getOneQuestionPage);
 
 
