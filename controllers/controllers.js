@@ -1,5 +1,4 @@
 const { Question } = require("../models/Question")
-
 const getHomePage = (req, res) => {
     Question.find()
         .then(result => {
@@ -10,6 +9,8 @@ const getHomePage = (req, res) => {
         )
         .catch( err => console.log(err))   
 };
+
+
 
 const getAddQuestionPage = (req, res) => {
     res.render('addQuestion')
@@ -29,10 +30,13 @@ const postQuestion = (req, res) => {
          .then( result => res.redirect('/'))
          .catch(err =>res.render('index', {err}))
  }
- 
  const getOneQuestionPage = (req, res) => {
-     res.render('oneQuestion')
- }
+    Question.findById({ _id: req.params.id})
+   .then(result =>
+   res.render('oneQuestion', { result }))
+   .catch(err => console.log(err))    
+}
+ 
  module.exports = {
      getHomePage,
      getAddQuestionPage,
