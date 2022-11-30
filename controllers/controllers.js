@@ -81,6 +81,34 @@ const postQuestion = (req, res) => {
     res.render('oneQuestion', { result }))
     .catch(err => console.log(err))  
  }
+
+ const updateOneQuestion = (req, res) => {
+    if (req.method === 'GET') {
+        Question.findById({ _id: req.params.id })
+            .then(result =>
+                res.render('editQuestion', { result }))
+            .catch(err => console.log(err))
+    }
+    if (req.method === 'POST') {
+        Question.findByIdAndUpdate({ _id: req.params.id })
+            .then(result => {
+                result.title = req.body.title
+                result.message = req.body.message
+                result.save()
+                    .then(() =>
+                     res.render('oneQuestion', { result }))
+                    .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
+    }
+ }
+
+ const deleteOneQuestion = (req, res) => {
+    Question.findByIdAndDelete({_id: req.params.id})
+    .then(result =>res.redirect('/'))
+    .catch( err => console.log(err))
+}
+
  module.exports = {
      getHomePage,
      getAddQuestionPage,
@@ -88,5 +116,7 @@ const postQuestion = (req, res) => {
      getSignUpPage,
      postQuestion,
      getOneQuestionPage,
-     createNewUser
+     createNewUser,
+     updateOneQuestion,
+     deleteOneQuestion
  }

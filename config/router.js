@@ -9,6 +9,7 @@ router.get('/signup',controller.getSignUpPage);
 router.post('/', controller.postQuestion);
 router.post('/create-new-user', controller.createNewUser);
 router.get('/question/:id', controller.getOneQuestionPage);
-
+router.all('/question/edit/:id', controller.updateOneQuestion)
+router.get('/question/delete/:id', controller.deleteOneQuestion)
 
 module.exports = router;
