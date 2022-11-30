@@ -13,7 +13,7 @@ const getHomePage = (req, res) => {
 };
 
 const getAddQuestionPage = (req, res) => {
-    res.render('addQuestion')
+    res.render('addQuestion')  
 }
 
 const getLogInPage = (req, res) => {
@@ -76,7 +76,10 @@ const postQuestion = (req, res) => {
  }
  
  const getOneQuestionPage = (req, res) => {
-     res.render('oneQuestion')
+    Question.findById({ _id: req.params.id})
+    .then(result =>
+    res.render('oneQuestion', { result }))
+    .catch(err => console.log(err))  
  }
  module.exports = {
      getHomePage,
