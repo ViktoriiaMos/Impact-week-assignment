@@ -16,10 +16,13 @@
  </div>
  <div class="card card-question">
   <div class="card-body">
-      <form action="/add/<%= result._id%>/comment" method="POST">
+      <form action="/add/<%= result._id%>/comments" method="POST">
           <div class="mb-3">
           <label for="comment" class="form-label">Add Comment</label>
           </div>
+          <div class="mb-3">
+            <input type="text" name="email" placeholder="email" required>
+            </div>
           <div class="mb-3">
           <textarea name="comment" class="form-control" id="comment" placeholder="Enter your comment" required></textarea>
           </div>
@@ -28,20 +31,20 @@
   </div>
 </div>
 <ul>
-    <% if(result.comments.length > 0) { %>
-        <% result.comments.forEach( comment => { %>
-          <% console.log(comment) %> 
-          <div class="card">
-            <div class="card-body">
-                <p><%= comment.comment %></p>
-                <p><%= comment.createdAt.toLocaleDateString() %></p>
-                  <form action="/delete/<%= comment._id %>/comment" method="POST">
-                      <button class="btn btn-warning">Delete</button>
-                  </form>
-            </div>
+  <% if(result.comments.length > 0) { %>
+      <% result.comments.forEach( comment => { %>
+        <% console.log(comment) %> 
+        <div class="card">
+          <div class="card-body">
+              <p><%= comments.comment %></p>
+              <p><%= comments.author %></p>
+              <p><%= comments.createdAt.toLocaleDateString() %></p>
+                <form action="/add/:id/comments/create" method="POST">
+                    <button class="btn btn-warning">Delete</button>
+                </form>
           </div>
-        <% }) %>
-    <% } %>
+        </div>
+      <% }) %>
+  <% } %>
 </ul>
-
 <%- include('./components/footer')%>
