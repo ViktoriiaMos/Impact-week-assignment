@@ -1,13 +1,32 @@
 *{
     margin: 0;
     padding: 0;
-}
 
+}
 .header{
     display: flex;
 }
-
-
+.label-login{
+    color:#149ba1;
+    background-color: #0fbbcf;
+}
+button{
+    background-color: #10c7c5;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.sign-up{
+    color:#149ba1;
+    background-color: #0fbbcf;
+}
 #title{
    margin: auto;
    margin-right: 420px;
@@ -53,13 +72,25 @@ h2{
 .btn{
     height: 37px;;
     margin-right: 50px;
+    background-color: #ff5354;
+    color: #a73445;
+    font-size: medium;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .add-question{
     width: 80%;
     margin: auto;
 }
+.main-login{
+    text-decoration: none;
+    background-color: #149ba1;
+}
+.back{
+        text-decoration: none;
+        background-color: #149ba1;
 
+}
 .center{
    padding: 20px 0;
 }
