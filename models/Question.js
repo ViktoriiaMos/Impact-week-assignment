@@ -9,7 +9,13 @@ const questionSchema = new Schema( {
     message: {
         type: String,
         required: true
-    }
+    },
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ]
 },{timestamps: true})
 
 const Question = mongoose.model('Question', questionSchema)

@@ -1,6 +1,6 @@
-const { Question } = require("../models/Question")
-const commentModel = require("../models/comment")
-const comment = require("../models/comment")
+const { Question } = require("../models/Question");
+const User = require("../models/User");
+const {Comment} = require('../models/Comment');
 
 const getHomePage = (req, res) => {
     Question.find()
@@ -14,8 +14,14 @@ const getHomePage = (req, res) => {
 };
 
 const getAddQuestionPage = (req, res) => {
-    res.render('addQuestion')  
+    res.render('addQuestion')
+    // Question.findById({_id: req.params.id}).populate('comments')
+    // .then(result =>
+    //     res.render('oneQuestion', { result , email: req.email}))
+    // .catch(err => console.log(err))
+   
 }
+
 
 const postQuestion = (req, res) => {
     // console.log(req.body)
@@ -31,7 +37,7 @@ const postQuestion = (req, res) => {
     res.render('oneQuestion', { result }))
     .catch(err => console.log(err))  
  }
-
+ 
  const updateOneQuestion = (req, res) => {
     if (req.method === 'GET') {
         Question.findById({ _id: req.params.id })
@@ -58,32 +64,38 @@ const postQuestion = (req, res) => {
     .then(result =>res.redirect('/'))
     .catch( err => console.log(err))
 }
-const addComment = async (req, res) => {
-   // let userId = await User.findOne({email : req.session.email})
-    let newComment = new commentModel(req.body);
-    newComment.owner = userId._id;
-    newComment.questionId = req.params.id;
-    newComment.save()
-    .then( (comment) => {
-        question.findById(req.params.id)
-            .then( (qesut) => {
-                qesut.comments.push(comment)
-                qesut.save()
-                res.redirect(`/question/${req.params.id}`)
-            }).catch( (err) => {
-                console.log(err)
-            })
-        
-    }).catch( (err) => {
+const addComment = (req, res) => {
+    const comment = new Comment({
+    author: User.email,
+    comment: req.body.comment
+ });
+comment.save((err, result) => {
+    if(err) {
         console.log(err)
-    })
-}
+    }else{
+        Question.findById(req.params.id, (err, question) =>{
+            if(err){
+                console.log(err)
+            }else{
+                console.log(question.comments)
+                question.comments.push(result);
+                question.save();
+                res.redirect('oneQuestion')
+            }
+        })
+        console.log(result);
+        res.redirect('oneQuestion')
+    }
+})
+ }
 
 const deleteComment = (req, res) => {
-    comment.findByIdAndDelete({_id: req.params.id})
-    .then(result =>res.redirect("/"))
+    Comment.findByIdAndDelete({_id: req.params.id})
+    .then(result =>res.redirect('/'))
     .catch( err => console.log(err))
 }
+
+
 
  module.exports = {
      getHomePage,
