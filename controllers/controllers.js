@@ -1,6 +1,7 @@
-const userModel = require('../models/users')
 const { Question } = require("../models/Question")
-const bcrypt = require('bcrypt')
+const commentModel = require("../models/comment")
+const comment = require("../models/comment")
+
 const getHomePage = (req, res) => {
     Question.find()
         .then(result => {
@@ -15,57 +16,6 @@ const getHomePage = (req, res) => {
 const getAddQuestionPage = (req, res) => {
     res.render('addQuestion')  
 }
-
-const getLogInPage = (req, res) => {
-    res.render('logIn')
-}
-const getSignUpPage = (req, res) => {
-    res.render('signUp')
-}
-
-
-
-
-
-const createNewUser = (req, res) => {
-    if(req.body.password.length < 8){
-        res.render('index', {
-            err: "Password should be 8 or more",
-            result: "",
-            logInerr: ""
-        })
-    } else {
-        let hashedPass = bcrypt.hashSync(req.body.password, 12);
-        if(!hashedPass){
-            res.render('index', {
-                err: "Something wrong",
-                result: "",
-                logInerr: ""
-            })
-        } else {
-            let userData = {
-                ...req.body,
-                password: hashedPass
-            }
-            let newUser = new userModel(userData)
-            newUser.save()
-                .then( (user) => {
-                    res.render('index', {
-                        err: "",
-                        logInerr: ""
-                    })
-                })
-                .catch( err => {
-                    throw err;
-                })
-        }
-    }
-}
-
-
-
-
-
 
 const postQuestion = (req, res) => {
     // console.log(req.body)
@@ -108,15 +58,40 @@ const postQuestion = (req, res) => {
     .then(result =>res.redirect('/'))
     .catch( err => console.log(err))
 }
+const addComment = async (req, res) => {
+   // let userId = await User.findOne({email : req.session.email})
+    let newComment = new commentModel(req.body);
+    newComment.owner = userId._id;
+    newComment.questionId = req.params.id;
+    newComment.save()
+    .then( (comment) => {
+        question.findById(req.params.id)
+            .then( (qesut) => {
+                qesut.comments.push(comment)
+                qesut.save()
+                res.redirect(`/question/${req.params.id}`)
+            }).catch( (err) => {
+                console.log(err)
+            })
+        
+    }).catch( (err) => {
+        console.log(err)
+    })
+}
+
+const deleteComment = (req, res) => {
+    comment.findByIdAndDelete({_id: req.params.id})
+    .then(result =>res.redirect("/"))
+    .catch( err => console.log(err))
+}
 
  module.exports = {
      getHomePage,
      getAddQuestionPage,
-     getLogInPage,
-     getSignUpPage,
      postQuestion,
      getOneQuestionPage,
-     createNewUser,
      updateOneQuestion,
-     deleteOneQuestion
+     deleteOneQuestion,
+     addComment,
+     deleteComment
  }
