@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 //    comment: String
 //});
 
-const Comment = mongoose.model('Comment', commentSchema);
 
 const commentSchema = new mongoose.Schema({
     comment: {
