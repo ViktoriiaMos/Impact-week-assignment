@@ -1,4 +1,16 @@
 <%- include('./components/header')%>
+<link rel="stylesheet" href="/public/style.css">
+<nav>
+  <ul>
+    <% if (user) { %>
+      <li>Welcome, <%= user.email %></li>
+      <li><a href="/logout">Log out</a></li>
+    <% } else { %>
+      <a href="/login" class="btn">Log in</a>
+      <a href="/signup" class="btn">Sign up</a>
+    <% } %>
+  </ul>
+</nav>
 <div class="header">
        <div id="title">
         <h1>Matrix Master Community</h1>
@@ -22,5 +34,4 @@
   <% } else { %>
       there are no messages....
 <% } %>
-
 <%- include('./components/footer')%>

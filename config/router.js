@@ -20,7 +20,8 @@ router.get('/login', authController.login_get);
 router.post('/login', authController.login_post);
 router.get('/logout', authController.logout_get);
 
-router.post('/add/:id/comments/comments/create', controller.addComment)
-router.post('/delete/:id/comment', controller.deleteComment)
+router.post('/add/:id/comments/comments/create', controller.addComment);
+router.post('/delete/:id/comment', controller.deleteComment);
+
 
 module.exports = router;
