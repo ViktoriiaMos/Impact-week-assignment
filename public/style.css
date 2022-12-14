@@ -1,107 +1,220 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 *{
     margin: 0;
     padding: 0;
 
 }
-.header{
-    display: flex;
+body{
+  margin: 20px 40px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  background: #fafafa;
 }
-.label-login{
-    color:#149ba1;
-    background-color: #0fbbcf;
-}
-button{
-    background-color: #10c7c5;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border-radius: 4px;
-    font-family:Arial, Helvetica, sans-serif;
-}
-.sign-up{
-    color:#149ba1;
-    background-color: #0fbbcf;
-}
-#title{
-   margin: auto;
-   margin-right: 420px;
-}
-h2{
-    position:relative;
-    margin-left: 55px;
-
-}
-.login h1{
-    font-size:medium;
-}
-.login{
-    position: absolute;
-    margin-top: 10px;
-    width: 100%;
-    background-color: lightgray;
-    padding: 30px;
-    margin-bottom: 45px;
-}
-.login button{
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border-radius: 4px;
-    font-family:Arial, Helvetica, sans-serif;
-}
-.login input{
-    font-family:Arial, Helvetica, sans-serif;
-    border-radius: 2px;
-    text-decoration: solid;
+.content{
+  margin: auto;
 }
 .add{
-    text-align: center;
-    margin-left: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1, h2, h3, h4, ul, li, a, p, input, label, button, div, footer{
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  color: #444;
+}
+h1{
+  font-weight: bolder;
+}
+a:hover{
+  color: #2E5652;
+}
+ul{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+}
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 100px;
+}
+nav ul{
+  display: flex;
+  align-items: center;
+}
+nav li{
+  margin-left: 20px;
+}
+nav li a{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
 }
 .btn{
-    height: 37px;;
-    margin-right: 50px;
-    background-color: #ff5354;
-    color: #a73445;
-    font-size: medium;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border-radius: 36px;
+  background: #2E5652;
+  color: white;
+}
+/* Grow Shadow */
+.anim {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.anim:hover, .anim:focus, .anim:active {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.card-body-overflow{
+  max-height: 300px;
+}
+.card-text-overflow{
+  max-height: 140px;
+  overflow: hidden;
+}
+.card-title-overflow{
+  max-height: 77px;
+  overflow: hidden;
 }
 
+.card-title{
+  font-weight: bolder;
+  border-bottom: 1px solid goldenrod ;
+}
+.card-text{
+  margin-bottom: 15px;
+}
+.see-more{
+  font-weight: bolder;
+  color: goldenrod;
+}
+.date{
+  font-size: small;
+}
+
+form h2{
+  font-size: 2.4em;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+.user{
+  width: 360px;
+  margin: 0 auto;
+  padding: 30px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  background: white;
+}
+input{
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  width: 100%;
+}
+label{
+  display: block;
+  margin: 20px 0 10px;
+}
+button{
+  margin-top: 30px;
+  border-radius: 36px;
+  background:#2E5652;
+  color: white;
+  border:0;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+}
+.return{
+margin-top: 30px;
+margin-right: 15px;
+}
+.error{
+  color: hsl(0, 100%, 50%);
+  margin: 10px 2px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+header{
+  display: flex;
+  align-items: center;
+}
+header{
+  width: 250px;
+  margin-right: 40px;
+ 
+}
+header h2{
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+header h3{
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  color: #999;
+}
+header .btn{
+  margin-top: 20px;
+  padding: 12px 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 0.8em;
+}
+.content{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
 .add-question{
-    width: 80%;
-    margin: auto;
+  width: 90%;
+  min-width: 200px;
+  flex: 1 0 21%; /* explanation below */
+  margin: 15px;
 }
-.main-login{
-    text-decoration: none;
-    background-color: #149ba1;
+.one-card{
+  margin-bottom: 10px;
+  
 }
-.back{
-        text-decoration: none;
-        background-color: #149ba1;
+.one-container{
+  margin: auto;
+ width: 80%;
+}
+.add-comment{
+  margin-top: 50px;
+}
+.card-body-comment{
+  font-size: smaller;
+}
+.comment-email{
+  font-weight: bold;
+}
 
-}
-.center{
-   padding: 20px 0;
-}
-h3{
-    text-align: center;
+footer{
+  text-align: center;
+  margin-top: 120px;
+  color: #aaa;
 }
 
-
-footer {
-    padding-top: 500px;
-    text-align: center;
-    color: gray;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+.header{
+    display: flex;
 }

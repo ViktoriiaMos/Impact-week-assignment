@@ -1,51 +1,52 @@
 <%- include('./components/header')%>
-<div class="container">
-    <% if (result) { %>
-        <div class="card">
+<link rel="stylesheet" href="/public/style.css">
+<div class="one-container">
+     <% if (result) { %>
+        <div class="card one-card">
             <div class="card-body">
               <h1></h1>
               <h5 class="card-title"><%= result.title %></h5>
               <p class="card-text"><%= result.message %></p>
-              <a href=/question/edit/<%= result._id%> class="btn btn-outline-dark">Edit</a>
-              <a href=/question/delete/<%= result._id%> class="btn btn-outline-dark">Delete</a>
-              <a href="/" class="btn btn-outline-dark">Go home</a>
+              <% if(user._id.toString() === result.user._id.toString() )   { %>
+                <a href=/question/edit/<%= result._id%> class="btn">Edit</a>
+                <a href=/question/delete/<%= result._id%> class="btn">Delete</a>
+              <% }%>
             </div>
-          </div>
+         </div>
         <% } else { %>
                 there is no record
-    <% } %>
- </div>
- <div class="card card-question">
-  <div class="card-body">
-      <form action="/add/<%= result._id%>/comments" method="POST">
-          <div class="mb-3">
-          <label for="comment" class="form-label">Add Comment</label>
-          </div>
-          <div class="mb-3">
-            <input type="text" name="email" placeholder="email" required>
+     <% } %>
+<p>Comments:</p>
+     <ul>
+      <% if(result.comments.length > 0) { %>
+          <% result.comments.forEach( comment => { %>
+            <div class="card">
+              <div class="card-body card-body-comment">
+                <p class="comment-email"><%= comment.email %></p>
+                  <p><%= comment.comment %></p>
+                  <p><% (new Date( comment.createdAt )).toLocaleDateString() %></p>
+                  <% if(user._id.toString() === result.user._id.toString())  { %>
+                    <form action="/delete/<%= comment._id %>/<%= result._id %>/comment" method="POST">
+                        <button class="btn">Delete</button>
+                    </form>
+                  <% } %> 
+              </div>
             </div>
-          <div class="mb-3">
-          <textarea name="comment" class="form-control" id="comment" placeholder="Enter your comment" required></textarea>
+          <% }) %>
+      <% } %>
+    </ul>
+    
+    <div class="mb-2">
+      <label for="comment" class="form-label">Add Comment</label>
+    </div>
+      <form action="/add/<%= result._id%>/comments/comments/create" method="POST">
+          <div class="mb-1">
+            <input type="text" name="email" class="form-control" placeholder="email" required>
           </div>
-          <button class="btn btn-primary">Add Comment</button>
+            <textarea name="comment" class="form-control" id="comment" placeholder="Enter your comment" required></textarea>
+          <button class="btn">Add Comment</button>
       </form>
-  </div>
-</div>
-<ul>
-  <% if(result.comments.length > 0) { %>
-      <% result.comments.forEach( comment => { %>
-        <% console.log(comment) %> 
-        <div class="card">
-          <div class="card-body">
-              <p><%= comments.comment %></p>
-              <p><%= comments.author %></p>
-              <p><%= comments.createdAt.toLocaleDateString() %></p>
-                <form action="//create" method="POST">
-                    <button class="btn btn-warning">Delete</button>
-                </form>
-          </div>
-        </div>
-      <% }) %>
-  <% } %>
-</ul>
+  
+    </div>
+
 <%- include('./components/footer')%>

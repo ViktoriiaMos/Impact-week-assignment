@@ -24,4 +24,5 @@ app.listen(4200, ()=> console.log('Running on 4200'))
 // routes
 app.get('*', checkUser);
 app.get('/addQuestion', requireAuth, (req, res) => res.render('addQuestion'));
+app.get('/oneQuestion', requireAuth, (req, res) => res.render('oneQuestion'));
 app.use(router)
