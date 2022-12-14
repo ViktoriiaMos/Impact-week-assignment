@@ -1,7 +1,8 @@
 <%- include('./components/header')%>
 <link rel="stylesheet" href="/public/style.css">
 <div class="main-login">
-  <form action="/signup">
+  <form class="user" action="/signup">
+    <h2>Log in</h2>
       <div class="label-login">
         <label for="email">Email</label>
         <input type="text" name="email"  />
@@ -9,10 +10,9 @@
         <label for="password">Password</label>
         <input type="password" name="password"  />
         <div class="password error"></div>
-        <button>login</button>
+        <button>LOG IN</button>
       </div>
     </form>
-    <h1><a href="/">Back</a></h1>
 </div>
   <%- include('./components/footer')%>
   

@@ -1,6 +1,7 @@
 <%- include('./components/header')%>
+<link rel="stylesheet" href="/public/style.css">
 <div class="add-question">
-    <h3 class="center">Add question</h3>
+    <h3 class="center add-question">Add question</h3>
     <form action="/" method = "POST">
         <div class="mb-3">
           <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Question">
@@ -8,8 +9,10 @@
         <div class="mb-3">
             <textarea type="text" name="message" class="form-control" id="exampleInputPassword1" cols="30" rows="10" placeholder="Description"></textarea>
         </div>
+        <div class="mb-3">
+          <input type="hidden" name="user" class="form-control" id="user" value="<%= user._id %>">
+        </div>
         <button type="submit" class="center btn btn-outline-dark">Submit</button>
-        <a href="/" class="center btn btn-outline-dark">Home</a>
       </form>
 </div>
 

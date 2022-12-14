@@ -1,37 +1,24 @@
 <%- include('./components/header')%>
 <link rel="stylesheet" href="/public/style.css">
-<nav>
-  <ul>
-    <% if (user) { %>
-      <li>Welcome, <%= user.email %></li>
-      <li><a href="/logout">Log out</a></li>
-    <% } else { %>
-      <a href="/login" class="btn">Log in</a>
-      <a href="/signup" class="btn">Sign up</a>
-    <% } %>
-  </ul>
-</nav>
-<div class="header">
-       <div id="title">
-        <h1>Matrix Master Community</h1>
-        <h2>There are -- questions</h2>
-    </div>   
-</div>
+
 <div class="add">
-    <a href="/addQuestion" class="btn btn-outline-dark">Add question</a>
+    <a href="/addQuestion" class="btn add">Add question</a>
 </div> <br>
-<% if (result.length> 0 ) {%>
+<div class="content">
+  <% if (result.length> 0 ) {%>
     <% result.forEach(element=> { %>
-  <div class="card  add-question">
-    <div class="card-body">
-      <h5 class="card-title"><%= element.title %></h5>
-                <p class="card-text mb-2"><%= element.message %></p>
-                <p><%= element.createdAt.toLocaleDateString() %></p>
-      <a href=/question/<%= element._id%> class="card-link">See more</a>
-    </div>
-  </div>
-  <% }); %>
-  <% } else { %>
-      there are no messages....
+  <div class="card add-question anim">
+    <div class="card-body card-body-overflow">
+      <h5 class="card-title card-title-overflow"><%= element.title %></h5>
+                <p class="card-text card-text-overflow mb-2"><%= element.message %></p>
+                <p class = "date"><%= element.createdAt.toLocaleDateString() %></p>
+                <a class="card-link see-more" href=/question/<%= element._id%> >See more</a>
+   </div>
+ </div>
+ <% }); %>
+ <% } else { %>
+     there are no messages....
 <% } %>
+</div>
 <%- include('./components/footer')%>
+ 

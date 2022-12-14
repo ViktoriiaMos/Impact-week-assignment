@@ -1,18 +1,18 @@
 <%- include("./components/header")%>
-    <div class="container">
-        <h1 class="mb-4">Welcome to our community</h1>
-        <h5>Update your question</h5>
+<link rel="stylesheet" href="/public/style.css">
+    <div class="add-question one-container">
+        <h3 class="add">Update your question</h3>
         <form action=/question/edit/<%= result._id %> method = "POST">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Title</label>
               <textarea  name="title" id="title" class="form-control"><%= result.title %></textarea>
             </div>
-            <div class="mb-3">
+            <div>
               <label for="exampleInputPassword1" class="form-label">Message</label>
-              <textarea name="message" class="form-control" id="message"><%= result.message %></textarea>
+              <textarea name="message" class="form-control" cols="30" rows="10" id="message"><%= result.message %></textarea>
             </div>
-            <a href=/question/<%= result._id%> class="btn btn-outline-dark">Return</a>
-            <button type="submit" class="btn btn-outline-dark">Submit</button>
+           <a href=/question/<%= result._id%> class="btn return">Return</a> 
+            <button type="submit" class="btn">Submit</button>
         </form>
     </div>
     <%- include("./components/footer")%>
