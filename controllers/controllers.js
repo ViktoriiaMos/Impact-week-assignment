@@ -31,7 +31,7 @@ const postQuestion = (req, res) => {
     Question.findById({ _id: req.params.id})
     .populate("comments").populate("user")
     .then(result => {
-        res.render('oneQuestion', { result })
+        res.render('oneQuestion', { result})
     })
     .catch(err => console.log(err))  
  } 
