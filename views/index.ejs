@@ -1,6 +1,7 @@
 <%- include('./components/header')%>
 <link rel="stylesheet" href="/public/style.css">
-
+<% if (user) { %>            
+  <% } %>
 <div class="add">
     <a href="/addQuestion" class="btn add">Add question</a>
 </div> <br>
@@ -12,6 +13,9 @@
       <h5 class="card-title card-title-overflow"><%= element.title %></h5>
                 <p class="card-text card-text-overflow mb-2"><%= element.message %></p>
                 <p class = "date"><%= element.createdAt.toLocaleDateString() %></p>
+                <% if (user) { %>
+                
+                <% } %>
                 <a class="card-link see-more" href=/question/<%= element._id%> >See more</a>
    </div>
  </div>

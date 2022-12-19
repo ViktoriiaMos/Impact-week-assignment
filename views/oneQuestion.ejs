@@ -7,7 +7,7 @@
               <h1></h1>
               <h5 class="card-title"><%= result.title %></h5>
               <p class="card-text"><%= result.message %></p>
-              <% if(user._id.toString() === result.user._id.toString() )   { %>
+              <% if(user._id.toString() === result.user._id.toString())    { %>
                 <a href=/question/edit/<%= result._id%> class="btn">Edit</a>
                 <a href=/question/delete/<%= result._id%> class="btn">Delete</a>
               <% }%>
